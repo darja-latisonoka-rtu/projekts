@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "title": "Iegādāties dāvanu mammai",
+        "deadline": "2025-05-10",
+        "priority": "vidējs"
+    },
+    {
+        "id": 2,
+        "title": "Izveidot prezentāciju skolas projektam",
+        "deadline": "2025-05-08",
+        "priority": "augsts"
+    }
+]

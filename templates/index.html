@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>Uzdevumu plānotājs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🗓️ Uzdevumu plānotājs</h1>
+
+    <form method="POST" action="/add">
+        <input name="title" placeholder="Nosaukums" required>
+        <input name="deadline" type="date" required>
+        <select name="priority">
+            <option value="zems">Zems</option>
+            <option value="vidējs">Vidējs</option>
+            <option value="augsts">Augsts</option>
+        </select>
+        <button type="submit">Pievienot</button>
+    </form>
+
+    <p>Kārtot pēc: 
+        <a href="/">Oriģināli</a> | 
+        <a href="/?sort=deadline">Termiņa</a> | 
+        <a href="/?sort=priority">Prioritātes</a>
+    </p>
+
+    {% if tasks %}
+    <table>
+        <tr>
+            <th>ID</th><th>Nosaukums</th><th>Termiņš</th><th>Prioritāte</th><th></th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.id }}</td>
+            <td>{{ task.title }}</td>
+            <td>{{ task.deadline }}</td>
+            <td>{{ task.priority }}</td>
+            <td><a href="/delete/{{ task.id }}">🗑️ Dzēst</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>📭 Uzdevumu nav.</p>
+    {% endif %}
+</body>
+</html>
