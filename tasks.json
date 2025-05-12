@@ -2,13 +2,27 @@
     {
         "id": 1,
         "title": "Iegādāties dāvanu mammai",
-        "deadline": "2025-05-10",
-        "priority": "vidējs"
+        "deadline": "2025-05-08",
+        "priority": "zems",
+        "status": "pabeigts"
     },
     {
         "id": 2,
         "title": "Izveidot prezentāciju skolas projektam",
         "deadline": "2025-05-08",
         "priority": "augsts"
+    },
+    {
+        "id": 3,
+        "title": "Izpildīt md",
+        "deadline": "2025-05-24",
+        "priority": "augsts",
+        "status": "pabeigts"
+    },
+    {
+        "id": 4,
+        "title": "Sagatavoties eksāmenam",
+        "deadline": "2025-06-20",
+        "priority": "zems"
     }
 ]

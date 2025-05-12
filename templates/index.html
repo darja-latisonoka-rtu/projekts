@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Uzdevumu plānotājs</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
 </head>
 <body>
     <h1>🗓️ Uzdevumu plānotājs</h1>
@@ -29,15 +28,15 @@
     {% if tasks %}
     <table>
         <tr>
-            <th>ID</th><th>Nosaukums</th><th>Termiņš</th><th>Prioritāte</th><th></th>
+            <th>ID</th><th>Nosaukums</th><th>Termiņš</th><th>Prioritāte</th><th>Darbības</th>
         </tr>
         {% for task in tasks %}
         <tr>
             <td>{{ task.id }}</td>
             <td>{{ task.title }}</td>
             <td>{{ task.deadline }}</td>
-            <td>{{ task.priority }}</td>
-            <td><a href="/delete/{{ task.id }}">🗑️ Dzēst</a></td>
+            <td class="priority {{ task.priority }}">{{ task.priority }}</td>
+            <td><a href="/delete/{{ task.id }}" onclick="return confirm('Vai tiešām dzēst šo uzdevumu?')">🗑️ Dzēst </a><a href="/edit/{{ task.id }}"> ✏️ Rediģēt</a></td>
         </tr>
         {% endfor %}
     </table>

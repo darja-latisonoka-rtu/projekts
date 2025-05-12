@@ -97,7 +97,23 @@ td a:hover {
     text-decoration: underline;
 }
 
-/* Mobile-friendly adjustments */
+/* Krāsu marķējums pēc prioritātes */
+.priority.augsts {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+.priority.vidējs {
+    color: #d35400;
+    font-weight: bold;
+}
+
+.priority.zems {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Mobilajām ierīcēm */
 @media (max-width: 768px) {
     form {
         flex-direction: column;

@@ -59,6 +59,23 @@ def delete_task(task_id):
     save_tasks(tasks)
     return redirect('/')
 
+@app.route('/edit/<int:task_id>', methods=['GET', 'POST'])
+def edit_task(task_id):
+    tasks = load_tasks()
+    task = next((t for t in tasks if t['id'] == task_id), None)
+
+    if not task:
+        return "Uzdevums nav atrasts", 404
+
+    if request.method == 'POST':
+        task['title'] = request.form['title']
+        task['deadline'] = request.form['deadline']
+        task['priority'] = request.form['priority']
+        save_tasks(tasks)
+        return redirect('/')
+
+    return render_template('edit.html', task=task)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

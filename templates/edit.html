@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>Rediģēt uzdevumu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>✏️ Rediģēt uzdevumu</h1>
+
+    <form method="POST" action="/edit/{{ task.id }}">
+        <input name="title" value="{{ task.title }}" required>
+        <input name="deadline" type="date" value="{{ task.deadline }}" required>
+        <select name="priority">
+            <option value="zems" {% if task.priority == 'zems' %}selected{% endif %}>Zems</option>
+            <option value="vidējs" {% if task.priority == 'vidējs' %}selected{% endif %}>Vidējs</option>
+            <option value="augsts" {% if task.priority == 'augsts' %}selected{% endif %}>Augsts</option>
+        </select>
+        <button type="submit">Saglabāt</button>
+    </form>
+
+    <p><a href="/">⬅️ Atpakaļ</a></p>
+</body>
+</html>
