@@ -1,8 +1,7 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7f9;
-    margin: 40px auto;
-    max-width: 800px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eef2f5;
+    margin: 0;
     padding: 20px;
     color: #333;
 }
@@ -10,18 +9,32 @@ body {
 h1 {
     text-align: center;
     color: #2c3e50;
+    margin-bottom: 30px;
 }
 
 form {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
     flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 input, select, button {
     padding: 10px;
-    font-size: 14px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
 }
 
 button {
@@ -29,34 +42,103 @@ button {
     color: white;
     border: none;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 button:hover {
     background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+p a {
+    margin: 0 8px;
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
+    padding: 15px;
     text-align: left;
+    border-bottom: 1px solid #eaeaea;
 }
 
 th {
-    background-color: #eaeaea;
+    background-color: #f7f7f7;
+    color: #555;
 }
 
-a {
+td a {
+    color: #e74c3c;
     text-decoration: none;
-    color: #3498db;
+    font-weight: bold;
 }
 
-a:hover {
+td a:hover {
     text-decoration: underline;
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+    form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        background: #fff;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    th {
+        display: none;
+    }
+
+    td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    td::before {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: bold;
+        color: #888;
+    }
+
+    td:nth-of-type(1)::before { content: "ID"; }
+    td:nth-of-type(2)::before { content: "Nosaukums"; }
+    td:nth-of-type(3)::before { content: "Termiņš"; }
+    td:nth-of-type(4)::before { content: "Prioritāte"; }
+    td:nth-of-type(5)::before { content: "Darbība"; }
 }
