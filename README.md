@@ -1,13 +1,14 @@
 ### Projekta uzdevuma apraksts
 
-Šis projekts ir vienkārša tīmekļa lietotne, kas ļauj lietotājam pievienot, skatīt, kārtot un dzēst uzdevumus. Lietotne ir izstrādāta ar Python programmēšanas valodu un Flask ietvaru, un dati tiek glabāti JSON failā
+Šis projekts ir vienkārša tīmekļa lietotne, kas ļauj lietotājam pievienot, skatīt, kārtot, rediģēt un dzēst uzdevumus. Lietotne ir izstrādāta ar Python programmēšanas valodu un Flask ietvaru, un dati tiek glabāti JSON failā
 
 Mērķis: izstrādāt uzdevumu pārvaldības lietotni, kurā lietotājs var:
 
 * pievienot jaunu uzdevumu ar termiņu un prioritāti
-* skatīt visus uzdevumus tabulas veidā
+* skatīt visus uzdevumus
 * kārtot uzdevumus pēc termiņa vai prioritātes
 * dzēst konkrētus uzdevumus
+* rediģēt esošos uzdevumus
 
 ---
 
@@ -24,12 +25,6 @@ Mērķis: izstrādāt uzdevumu pārvaldības lietotni, kurā lietotājs var:
 
 Uzdevumi tiek glabāti kā saraksts ar vārdnīcām. Katram uzdevumam ir šādi lauki:
 
-* id – unikāls uzdevuma identifikators
-* title – uzdevuma nosaukums 
-* deadline – izpildes termiņš (YYYY-MM-DD)
-* priority – prioritāte (zems, vidējs, augsts)
-
-Piemērs:
 {
     "id": 1,
     "title": "Uzdevuma nosaukums",
@@ -37,25 +32,35 @@ Piemērs:
     "priority": "vidējs"
 }
 
+* `id` – unikāls uzdevuma identifikators
+* `title` – uzdevuma nosaukums
+* `deadline` – izpildes termiņš (formāts: YYYY-MM-DD)
+* `priority` – prioritāte (vērtības: zems, vidējs, augsts)
+
 ---
 
-### Tīmekļa lapas (maršruti):
+### Maršruti (Routes)
+`/` Galvenā lapa. Rāda visus uzdevumus ar kārtošanas iespējām 
+`/add` Apstrādā  pieprasījumu, lai pievienotu jaunu uzdevumu                  
+`/delete/<task_id>` Dzēš uzdevumu pēc ID un pārrēķina ID secību
+`/edit/<task_id>` Parāda rediģēšanas formu. Saglabā labojumus konkrētam uzdevumam
 
-/ – Galvenā lapa. Rāda visus uzdevumus un ļauj tos kārtot
-/add – Pieņem POST pieprasījumu, lai pievienotu jaunu uzdevumu
-/delete/<task_id> – Dzēš uzdevumu ar konkrēto ID
+---
 
-### Papildfunkcijas:
+### Funkcionalitāte
 
-Uzdevumu sarakstu var kārtot pēc termiņa vai prioritātes
-Pēc dzēšanas tiek pārrēķināti uzdevumu ID, lai tie saglabātu secību
+* `load_tasks()` – Ielādē datus no JSON faila
+* `save_tasks(tasks)` – Saglabā datus JSON failā
+* `index()` – Rāda visus uzdevumus, atbalsta kārtošanu
+* `add_task()` – Pievieno jaunu uzdevumu
+* `delete_task(task_id)` – Noņem konkrētu uzdevumu
+* `edit_task(task_id)` – Rediģē esošu uzdevumu
 
-### Funkcijas
+---
 
-load_tasks() – Ielādē uzdevumus no JSON faila
-save_tasks(tasks) – Saglabā izmaiņas JSON failā
-index() – Galvenais skatījums, kurā attēloti uzdevumi un kārtošanas funkcionalitāte
-add_task() – Apstrādā formu, lai pievienotu jaunu uzdevumu
-delete_task(task_id) – Noņem uzdevumu pēc ID                 
+### HTML un CSS
 
-HTML veidne atrodas `templates/index.html` un CSS stili ir `static/style.css` failā
+* `templates/index.html` – Galvenā lapa ar uzdevumu pievienošanu, sarakstu un kārtošanu
+* `templates/edit.html` – Forma, lai rediģētu konkrētu uzdevumu
+* `static/style.css` – Moderns un responsīvs dizains ar krāsu kodēšanu atbilstoši prioritātei (zaļš = zems, oranžs = vidējs, sarkans = augsts)
+* Atbalsta arī mobilās ierīces ar elastīgu izkārtojumu
